@@ -60,10 +60,17 @@ existingEl.insertAdjacentHTML("beforeend", "<p>Some HTML</p>");
 existingEl.insertAdjacentHTML("afterend", "<p>Some HTML</p>");
 ```
 
+### Remove an Element
+```js
+el.remove(); // NOTE: not supported by IE11
+el.parentElement.removeChild(el); // supported by all browsers
+```
+
 ### Listen for an Event
 ```js
 el.addEventListener("click", (event) => {
     // Code here runs every time the element is clicked.
+    // Use event.target if necessary to identify what element was clicked.
 });
 ```
 
