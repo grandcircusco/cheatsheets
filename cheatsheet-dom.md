@@ -30,6 +30,7 @@ inputEl.value = "Some Value"; // Set value of a input element
 inputEl.value = ""; // Clear an input element
 el.classList.add("some-class"); // Adds a class
 el.classList.remove("some-class"); // Removes a class
+el.classList.toggle("some-class"); // flip a class on or off
 el.style.backgroundColor = "red"; // individual CSS property (use camel case)
 ```
 
