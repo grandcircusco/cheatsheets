@@ -7,9 +7,10 @@
   * Change Packaging from Jar to War.
 * Enter a group name, e.g. co.grandcircus
 * Enter an artifact name, e.g. spring-lab
-* Add Dependencies: Spring *Web* Starter, Spring Boot *DevTools*
+* Add Dependencies: Spring *Web*, Spring Boot *DevTools*
 * Click Generate Project. It will download a ZIP file.
-* Unzip the file.
+* Unzip the file. This will create a folder.
+* Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
 
 ### 2. IMPORT INTO ECLIPSE
 * In Eclipse, select File > Import
