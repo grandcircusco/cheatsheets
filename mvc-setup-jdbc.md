@@ -71,16 +71,16 @@ spring.datasource.password=password
 ### 7. CREATE DATABASE & TABLES
 In MySQL Workbench, create a schema for the project and add relevant tables. Add sample data to tables as necessary.
 
-### 7. CREATE ENTITY (A.K.A. POJO, DTO, JAVA BEAN)
+### 8. CREATE ENTITY (A.K.A. POJO, DTO, JAVA BEAN)
 Usually one per database table.
 
-### 8. CREATE A DAO
+### 9. CREATE A DAO
 * In `src/main/java`, inside your package, create a new Java file.
 * Name it `<Something>Dao`.
 * Annotate the class with `@Repository`.
 * Create a private field of type `JdbcTemplate`. Annotate this field with `@Autowired`.
 * Create public methods for each of your database operations.
 
-### 9. WIRE DAO TO CONTROLLER
+### 10. WIRE DAO TO CONTROLLER
 * In your Controller, add a private field with the type of your Dao. Annotate this field with `@Autowired`.
 * Within your controller methods, use this field to access the methods on your DAO.
