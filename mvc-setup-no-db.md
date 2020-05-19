@@ -47,9 +47,9 @@ spring.mvc.view.suffix=.jsp
 * In `src/main/java`, inside your package, create a new Java file.
 * Name it `<Something>Controller`.
 * Annotate the class with `@Controller`
-* Add a method that returns a `ModelAndView`.
+* Add a method that returns a `String`.
 * Annotate the method with `@RequestMapping("/some-url-path")`, using the URL path you want for this page (`"/"` for the home page.
-* Return a new `ModelAndView` that gives the name of your view JSP file without the ".jsp" extension.
+* Return a String that gives the name of your view JSP file without the ".jsp" extension.
 
 ### 6. CREATE A VIEW
 * In `src/main` create three nested folders: `webapp/WEB-INF/views`. (HINT: A common mistake is to put this in src rather than src/main. Also if you copy-paste, use care that the folders you create do not contain leading or trailing spaces.)
