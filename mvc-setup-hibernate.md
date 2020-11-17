@@ -7,7 +7,7 @@
   * Change Packaging from Jar to War.
 * Enter a group name, e.g. co.grandcircus
 * Enter an artifact name, e.g. spring-lab
-* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, *MySQL* Driver, Spring Data *JPA*
+* Add Dependencies: Spring **Web, Spring Boot DevTools, MySQL Driver, Spring Data JPA**
 * Click Generate Project. It will download a ZIP file.
 * Unzip the file. This will create a folder.
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
@@ -45,6 +45,7 @@ spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
 
 # Database Connection
+# Update this with your own IP (if not localhost), and your username and password
 spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
 spring.datasource.username=root
 spring.datasource.password=password
@@ -80,7 +81,7 @@ spring.datasource.password=password
 * Return a String that gives the name of your view JSP file without the ".jsp" extension.
 
 ### 6. CREATE A VIEW
-* In `src/main` create three nested folders: `webapp/WEB-INF/views`. (HINT: A common mistake is to put this in src rather than src/main. Also if you copy-paste, use care that the folders you create do not contain leading or trailing spaces.)
+* In `src/main` create three nested folders: **`webapp/WEB-INF/views`**. (HINT: A common mistake is to put this in src rather than src/main. Also if you copy-paste, use care that the folders you create do not contain leading or trailing spaces.)
 * Within this views folder, select New > Other…. Select JSP File. * Select a filename that matches the name you returned from your controller, but has the ".jsp" extension.
 * Within this JSP, use EL (e.g. `${model}`).
 * Optionally, add the JSTL library by adding the following code at the top of the file.
@@ -123,3 +124,13 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 ### 9. WIRE DAO TO CONTROLLER
 * In your Controller, add a private field with the type of your Dao. Annotate this field with `@Autowired`.
 * Within your controller methods, use this field to access the methods on your DAO.
+
+### 10. CREATE A RUN CONFIGURATION
+* Right-click on the application java file
+* Click properties
+* Click New
+* Click Java Application
+* Should have everything filled in; the name of the project and the file you just clicked on
+* Click OK
+* Click Apply and Close
+
