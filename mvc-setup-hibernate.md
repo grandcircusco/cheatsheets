@@ -77,8 +77,8 @@ spring.datasource.password=password
 * Add these two annotations before the class: (All of these annotations are in the `javax.persistence` package.)
 ```
 @Entity
-@Table(name="car") // Or whatever table name you want
-public class Car {
+@Table(name="flower") // Or whatever table name you want
+public class Flower {
 ```
 * If you want an autoincrement identity column, add this inside the class:
 ```
@@ -136,7 +136,7 @@ For example:
 
 ```
 @Autowired
-private CarRepository rep;
+private FlowerRepository rep;
 ```
 
 ### 10. CREATE A RUN CONFIGURATION
