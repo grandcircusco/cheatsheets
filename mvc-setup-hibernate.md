@@ -72,7 +72,23 @@ spring.datasource.password=password
 * Open `.gitignore`. You may need to open the Navigator view in Eclipse to see this hidden file.
 * At the bottom of `.gitignore`, add this line: `src/main/resources/config/application.properties`.
 
-### 5. CREATE A CONTROLLER
+### 5. CREATE A DATA CLASS (called an entity)
+* In `src/main/java`, inside your package, create a new Java class.
+* Add these two attributes before the class:
+```
+@Entity
+@Table(name="car") // Or whatever table name you want
+public class Car {
+```
+* If you want an autoincrement identity column, add this inside the class:
+```
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long id;
+```
+* Include a full constructor with all members and a default constructor with no params
+
+### 6. CREATE A CONTROLLER
 * In `src/main/java`, inside your package, create a new Java file.
 * Name it `<Something>Controller`.
 * Annotate the class with `@Controller`
@@ -80,7 +96,7 @@ spring.datasource.password=password
 * Annotate the method with `@RequestMapping("/some-url-path")`, using the URL path you want for this page (`"/"` for the home page.
 * Return a String that gives the name of your view JSP file without the ".jsp" extension.
 
-### 6. CREATE A VIEW
+### 7. CREATE A VIEW
 * In `src/main` create three nested folders: **`webapp/WEB-INF/views`**. (HINT: A common mistake is to put this in src rather than src/main. Also if you copy-paste, use care that the folders you create do not contain leading or trailing spaces.)
 * Within this views folder, select New > Other…. Select JSP File. * Select a filename that matches the name you returned from your controller, but has the ".jsp" extension.
 * Within this JSP, use EL (e.g. `${model}`).
@@ -90,7 +106,7 @@ spring.datasource.password=password
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 ```
 
-### 7. ANNOTATE ENTITY (A.K.A. POJO, DTO, JAVA BEAN)
+### 8. ANNOTATE ENTITY (A.K.A. POJO, DTO, JAVA BEAN)
 *WARNING*: For this step, you must create your entities in the main package or in a subpackage of the main package of your app.
 
 * Add `@Entity` annotation to the class.
@@ -98,7 +114,7 @@ spring.datasource.password=password
 * Add `@Table` and `@Column` annotations as needed to adjust database table and column definitions.
 * (All of these annotations are in the `javax.persistence` package.)
 
-### 8. CREATE A DAO
+### 9. CREATE A DAO
 *WARNING*: For this step, you must create your DAO/Repository in the main package or in a subpackage of the main package of your app.
 
 #### Option 1: Using EntityManager
@@ -121,11 +137,11 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 ```
 * Leave the body of the interface empty for now. It inherits all the methods you need to start.
 
-### 9. WIRE DAO TO CONTROLLER
+### 10. WIRE DAO TO CONTROLLER
 * In your Controller, add a private field with the type of your Dao. Annotate this field with `@Autowired`.
 * Within your controller methods, use this field to access the methods on your DAO.
 
-### 10. CREATE A RUN CONFIGURATION
+### 11. CREATE A RUN CONFIGURATION
 * Right-click on the application java file
 * Click properties
 * Click New
