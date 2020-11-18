@@ -43,6 +43,9 @@
 ```
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
+# This next line is optional, but recommended. You will probably want to give each app a different server port.
+# If you want to use this line, uncomment it by removing the #
+#server.port=8081
 
 # Database Connection
 # Update this with your own IP (if not localhost), and your username and password
