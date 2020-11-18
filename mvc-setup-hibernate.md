@@ -58,6 +58,8 @@ spring.datasource.password=password
 spring.jpa.hibernate.ddl-auto=none
 # If using ddl-auto, be sure to specify this dialect for MySQL
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+# If you want to see the SQL statements being sent to the server, uncomment the following line:
+#logging.level.org.hibernate.SQL=DEBUG
 ```
 
 #### 4b. SECRET APPLICATION.PROPERTIES (OPTIONAL)
