@@ -20,26 +20,27 @@
 		</dependency>
 ```
 ### application.properties
-Set the port to something unique. Remember to change the line with "none" to "create" to create the tables and once they're created, change it back to "none"
 
 ```
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
-server.port=8081
+# This next line is optional, but recommended. You will probably want to give each app a different server port.
+# If you want to use this line, uncomment it by removing the #
+#server.port=8081
 
 # Database Connection
-# Database "Connection String"
-# Java Persistence API (JPA)
-spring.datasource.url=jdbc:mysql://192.168.56.101:3306/week6?useSSL=false&serverTimezone=America/Detroit
+# Update this with your own IP (if not localhost), and your username and password
+spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
 spring.datasource.username=root
-spring.datasource.password=java2020
+spring.datasource.password=password
 
 # This optional property indicates whether hibernate automatically creates database tables for us
 # Set it to create or update, start the app, then set it back to none.
 spring.jpa.hibernate.ddl-auto=none
 # If using ddl-auto, be sure to specify this dialect for MySQL
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
-logging.level.org.hibernate.SQL=DEBUG
+# If you want to see the SQL statements being sent to the server, uncomment the following line:
+#logging.level.org.hibernate.SQL=DEBUG
 ```
 
 ### Folder for views
