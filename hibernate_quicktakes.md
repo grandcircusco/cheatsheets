@@ -20,7 +20,7 @@
 		</dependency>
 ```
 ### application.properties
-
+SUGGESTION: Copy from one of your own projects and change the server.port. But if you need a fresh one, here's a copy:
 ```
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
