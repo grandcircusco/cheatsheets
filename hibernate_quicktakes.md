@@ -18,6 +18,7 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
 ```
 ### application.properties
 SUGGESTION: Copy from one of your own projects and change the server.port. But if you need a fresh one, here's a copy:
@@ -41,6 +42,7 @@ spring.jpa.hibernate.ddl-auto=none
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
 # If you want to see the SQL statements being sent to the server, uncomment the following line:
 #logging.level.org.hibernate.SQL=DEBUG
+
 ```
 
 ### Folder for views
