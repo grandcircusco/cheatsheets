@@ -78,6 +78,7 @@ Save that string in the database table (in the example, see the postregister fun
 
 **5. To compare a password for login, load the existing encrypted password from the database table, and use the encoder’s “matches” function. (See the postlogin function in the MainController of the example). E.g.
 
+
 ```
 	// Locate the user by email address
 	PWUser user = pwrep.findOneByEmail(email);
