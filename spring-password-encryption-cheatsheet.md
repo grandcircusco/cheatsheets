@@ -66,7 +66,7 @@ public class MainController {
 ```
 
 
-**4. To encode the password (for both register and login) call the encoder’s “encode” function, e.g.**
+**4. To encode the password for registration call the encoder’s “encode” function, e.g.**
 
 ```
 pw = pwEncoder.encode(pw);
@@ -74,9 +74,9 @@ pw = pwEncoder.encode(pw);
 
 This returns a string. Then:
 
-* For registering, save that string in the database table (in the example, see the postregister function in MainController)
+Save that string in the database table (in the example, see the postregister function in MainController)
 
-* For login, load the existing encrypted password from the database table, and use the encoder’s “matches” function. (See the postlogin function in the MainController of the example). E.g.
+**5. To compare a password for login, load the existing encrypted password from the database table, and use the encoder’s “matches” function. (See the postlogin function in the MainController of the example). E.g.
 
 ```
 	// Locate the user by email address
