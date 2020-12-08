@@ -76,7 +76,7 @@ This returns a string. Then:
 
 Save that string in the database table (in the example, see the postregister function in MainController)
 
-**5. To compare a password for login, load the existing encrypted password from the database table, and use the encoder’s “matches” function. (See the postlogin function in the MainController of the example). E.g.
+**5. To compare a password for login, load the existing encrypted password from the database table, and use the encoder’s “matches” function. (See the postlogin function in the MainController of the example). E.g.**
 
 
 ```
