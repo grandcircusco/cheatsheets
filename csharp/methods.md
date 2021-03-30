@@ -1,4 +1,4 @@
-Some basic methods:
+# Basic methods:
 
 ```cs
 using System;
