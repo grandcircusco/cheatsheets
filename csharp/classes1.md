@@ -1,4 +1,6 @@
-This class demonstrates
+# Sample Class
+
+The class below demonstrates:
 
 * Static variables
 * Static methods
