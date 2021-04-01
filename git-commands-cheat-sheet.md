@@ -15,7 +15,17 @@
 
 4. Refresh the GitHub page to verify that your files have been copied up.
 
-### Add changes to an existing project
+### Clone an existing project
+
+Cloning a repository makes a local repository copy on your computer. Then you can contribute work to that project just like if you had created it yourself (assuming you have permission).
+
+1. On GitHub.com, find the repository you want to clone.
+2. Click the green code button and copy the URL that is shown. The URL starts with "https://github.com" and ends with ".git".
+3. On the command line, `cd` to a folder where you want this repository on your computer. When you clone it will make a new folder *inside* of this folder.
+4. Then run this command `git clone PASTE_URL_HERE`, but replace PASTE_URL_HERE with the URL you copied from GitHub.
+5. When the command finishes there should be a new folder with the same name as the GitHub repository. `ls` to see it and/or `cd` into it to start working.
+
+### Add changes to a project
 
 On the command line...
 
