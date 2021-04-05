@@ -65,12 +65,12 @@ Here's what it looks like...
 * `git show <commit hash>` - View details about a particular commit.
 * `git remote -v` - View which remote repository (i.e. GitHub repository) this repo is linked to, if any.
 * `git remote add origin <GitHub URL>` - Link to a remote repository (i.e. a GitHub repo).
-* `git push -u origin master` - The first push to the remote repository. Sets up for future pushes with simply `git push`.
+* `git push -u origin main` - The first push to the remote repository. Sets up for future pushes with simply `git push`.
 * `git clone <GitHub URL>` - Download and link a copy of a remote GitHub repository onto your computer. This creates a new folder on your computer.
 * `git checkout <commit hash>` - temporarily go back to a commit
-* `git checkout master` - return to the latest commit
+* `git checkout main` - return to the latest commit
 * `git reset --hard <commit hash>` - undo back to an old commit
 * `git push --force` - update GitHub after a reset
-* `git reset --hard origin/master` - reset local repo to GitHub
+* `git reset --hard origin/main` - reset local repo to GitHub
 * `git checkout -- <file>` - undo all changes to a file
 * `git reset HEAD <file>` - remove a file from staging
