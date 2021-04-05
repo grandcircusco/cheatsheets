@@ -11,7 +11,7 @@
 
 2. On GitHub.com, log in and create a new repository. Give it a name, such as "Lab2", and leave all the other options as they are.
 
-3. Copy both lines under "…or push an existing repository from the command line" on GitHub, paste them on the command line, and press ENTER.
+3. Copy all lines under "…or push an existing repository from the command line" on GitHub, paste them on the command line, and press ENTER.
 
 4. Refresh the GitHub page to verify that your files have been copied up.
 
