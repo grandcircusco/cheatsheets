@@ -9,10 +9,10 @@ git pull
 
 #### To Send changes to others
 ```bash
-git pull
-## make sure it still works
 git add <files>
 git commit -m '<my message>'
+git pull
+## make sure it still works
 git push
 ```
 
