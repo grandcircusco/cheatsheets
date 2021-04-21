@@ -6,7 +6,15 @@ Add NuGet packages:
 * Microsoft.EntityFrameworkCore.SqlServer
 * Microsoft.EntityFrameworkCore.Design
 
-Add the Student and Course classes (plain old objects), which are two entity classes. Then add one context class that includes a connection string.
+You can do this via NuGet inside Visual Studio or via the dotnet command as follows:
+
+```
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+```
+
+Add the Student and Course classes (plain old objects), which are two entity classes, as shown in the code below. Then add one context class that includes a connection string.
 
 Add the appropriate using statements:
 
