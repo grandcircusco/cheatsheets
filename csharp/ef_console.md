@@ -22,14 +22,6 @@ Add the appropriate using statements:
 * using System.Linq;
 
 
-In DOS or BASH shell, switch to directory containing the csproj file. Then type the following two commands:
-```
-dotnet ef migrations add CreateSchoolDB3
-dotnet ef database update
-```
-
-Note: You can alternatively use commands in the Nuget Package Manger Console, but if you do, you need to make sure you choose the current project in the Default project dropdown.
-
 Then add code in the main that accesses the data such as in the example shown below.
 
 ```cs
@@ -83,3 +75,11 @@ namespace efconsole2
     }
 }
 ```
+
+Next, In DOS or BASH shell, switch to directory containing the csproj file. Then type the following two commands:
+```
+dotnet ef migrations add CreateSchoolDB3
+dotnet ef database update
+```
+
+Note: You can alternatively use commands in the Nuget Package Manger Console, but if you do, you need to make sure you choose the current project in the Default project dropdown.
