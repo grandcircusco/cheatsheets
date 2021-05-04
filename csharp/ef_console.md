@@ -85,7 +85,7 @@ dotnet ef database update
 Note: You can alternatively use commands in the Nuget Package Manger Console, but if you do, you need to make sure you choose the current project in the Default project dropdown. In that case you would use these commands instead:
 
 ```
-add-migration CreateShool
+add-migration CreateSchool
 update-database
 ```
 
