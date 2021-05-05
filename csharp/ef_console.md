@@ -50,7 +50,9 @@ namespace efconsole2
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-N3E6T0C\SQLEXPRESSGC;Database=gcentity2;User Id=sa;Password=abc123;");
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=efconsole1;Integrated Security=SSPI;");
+            // Or For username/password, use the following:
+            // optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=efconsole1;User Id=sa;Password=abc123;");
         }
     }
 
