@@ -26,7 +26,7 @@ namespace ProductsApp.Models
 }
 ```
 
-Then the controller. (I deleted parts that weren't needed from the default project template.)
+Then the controller. (I deleted parts that weren't needed from the default project template.) Notice we have THREE actions. These are thre three entry points into our program; each gets a URL through which we can call it.
 
 ### HomeController.cs
 
@@ -72,7 +72,7 @@ namespace ProductsApp.Controllers
 }
 ```
 
-Then two pages: One for the index, where we list the products, and that's a form for entering a new product.
+Then two pages: One for the index, where we list the products, and that's a form for entering a new product. The form goes with TWO actions: One displays the form, and one is a URL that runs in response to clicking the form; that action saves the data in the list.
 
 ### Index.cshtml
 
