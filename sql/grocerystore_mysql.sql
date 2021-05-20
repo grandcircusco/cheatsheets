@@ -1,7 +1,7 @@
 create database grocerystore;
 use grocerystore;
 CREATE TABLE category (
-    id VARCHAR(10),
+    id VARCHAR(10) NOT NULL,
     name VARCHAR(30),
     description VARCHAR(100),
     location VARCHAR(10),
