@@ -5,7 +5,7 @@ create table employee (
     firstname varchar(50),
     lastname varchar(50),
     phone varchar(15),
-    email varchar(15),
+    email varchar(255),
     department varchar(8),
     PRIMARY KEY (id)
 );
