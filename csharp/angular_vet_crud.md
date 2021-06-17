@@ -8,8 +8,7 @@ We have two components:
 * show-pet component
   * This component displays a single pet
   * It has a template (html) file, a code behind (ts) file, and a style (css) file
-  * It's kind of messy right now, as the "edit" just lives right below the view information.
-  * In a future example I'll show you how you can include a variable, maybe called "mode" that's as boolean. Then we would wrap the "view" part inside an ngIf statement, so the view part only shows if mode is true, and the "edit" part will be inside an ngIf for when mode is false.
+  * Look closely at the "mode" member variable and how I'm attaching it to a checkbox, and using it in a couple of ngIf blocks to toggle between view and edit mode.
 
 # Main App Component
 
@@ -119,12 +118,18 @@ export class AppComponent {
 
 ```html
 <div class="OnePet">
-    <div>Name: {{ thispet.name }}</div>
-    <div>Species: {{ thispet.species }}</div>
-    <div>Age: {{ thispet.age }}</div>
-    <div><button (click)="deleteMe()">Delete</button></div>
 
-    <div>
+    <input [(ngModel)]="mode" type="checkbox" /> Edit Mode
+
+    <div *ngIf="mode == false">
+        <div>Name: {{ thispet.name }}</div>
+        <div>Species: {{ thispet.species }}</div>
+        <div>Age: {{ thispet.age }}</div>
+        <div><button (click)="deleteMe()">Delete</button></div>
+    </div>
+
+
+    <div *ngIf="mode == true">
         Edit Pet<br />
         <input [(ngModel)]="thispet.name" type="text" /><br />
         <input [(ngModel)]="thispet.species" type="text" /><br />
@@ -154,6 +159,8 @@ export class ShowPetComponent implements OnInit {
   @Input() thispet: Pet = { name: '', species: '', age: 0 };
 
   @Output() remove: EventEmitter<Pet> = new EventEmitter<Pet>();
+
+  @Input() mode: boolean = false;
   
   constructor() { }
 
