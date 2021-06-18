@@ -10,6 +10,33 @@ We have two components:
   * It has a template (html) file, a code behind (ts) file, and a style (css) file
   * Look closely at the "mode" member variable and how I'm attaching it to a checkbox, and using it in a couple of ngIf blocks to toggle between view and edit mode.
 
+# First: Update app.module.ts
+
+Add the ```FormsModule``` to the imports array, and add the associated import statement at the top so it looks like this:
+
+```ts
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser'; // =====ADD THIS LINE=====
+
+import { AppComponent } from './app.component';
+import { ShowPetComponent } from './show-pet/show-pet.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ShowPetComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule // =====ADD THIS LINE, AND THE COMMA ON THE LINE BEFORE=====
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
 # Main App Component
 
 **Template: app.component.html**
