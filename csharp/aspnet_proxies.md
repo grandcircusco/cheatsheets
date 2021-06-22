@@ -29,6 +29,8 @@ https://localhost:44308/dnd/classes/barbarian will load https://www.dnd5eapi.co/
 
 https://localhost:44308/dnd/proficiencies/skill-animal-handling will load https://www.dnd5eapi.co/api/proficiencies/skill-animal-handling
 
+For the Yelp, we're doing the whole shebang -- any combination of paths from the API, plus any query params, plus a bearer token added into the header. See the examples in the comments for that one.
+
 Place the code inside the Configure function, just after the UseEndpoints stuff like so:
 
 ```cs
@@ -48,11 +50,32 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         // e.g. localhost/reddit/aww will go to www.reddit.com/r/aww
         proxies.Map("/reddit/{subr}", proxy => proxy.UseHttp((_, args) => $"https://www.reddit.com/r/{args["subr"]}/.json" ));
 
-        // Example of multiple parameters (using DnD API)
-        proxies.Map("/dnd/{**rest}", proxy => proxy.UseHttp((_, args) =>
-            $"https://www.dnd5eapi.co/api/{args["rest"]}"
-        ));
+        // DND example: Handles multiple example (using DnD API)
+        // Also, I wrote out the lambdas in longer form for clarity in case maybe they just like it better that way
+        proxies.Map("/dnd/{**rest}", proxy => {
+            proxy.UseHttp((context, args) =>
+            {
+                return $"https://www.dnd5eapi.co/api/{args["rest"]}";
+            }
+            );
+        });
+
+        // Yelp example: Will handle all formats of the Yelp API and you can insert a header such as bearer token
+        // Example: https://localhost:44308/yelp/businesses/search?location=Lansing,MI
+        // Example: https://localhost:44308/yelp/businesses/search?location=Lansing,MI&radius=500
+        // Example: https://localhost:44308/yelp/businesses/M35hpOEOkSftheUfiOd_0g
+        // Example: https://localhost:44308/yelp/businesses/M35hpOEOkSftheUfiOd_0g/reviews
+        proxies.Map("/yelp/{**rest}", proxy => {
+            proxy.UseHttp((context, args) =>
+            {
+                context.Request.Headers["Authorization"] = "Bearer ABCDEF123456";
+                string url = $"https://api.yelp.com/v3/{args["rest"]}{context.Request.QueryString.Value}";
+                return url;
+            }
+            );
+        });
     });
+
 
 }
 
