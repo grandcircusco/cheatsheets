@@ -23,7 +23,7 @@ The following example shows two different proxies, one to the Reddit API and one
 For the Reddit API, we will convert incoming API calls of the form /reddit/SOMETHING to the subreddit API like so: https://www.reddit.com/r/SOMETHING/.json.
 Thus, to load the AWW redit, you would simply call back to your server with /reddit/AWW.
 
-For the DnD API, we're responding to two forms: One parameter and two parameters. For example (you'll need to set the port number according to your app; in this example it's 44308):
+For the DnD API, we're responding to multiple path levels. For example (you'll need to set the port number according to your app; in this example it's 44308):
 
 https://localhost:44308/dnd/classes/barbarian will load https://www.dnd5eapi.co/api/classes/barbarian
 
@@ -48,11 +48,12 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         // e.g. localhost/reddit/aww will go to www.reddit.com/r/aww
         proxies.Map("/reddit/{subr}", proxy => proxy.UseHttp((_, args) => $"https://www.reddit.com/r/{args["subr"]}/.json" ));
 
-        // Example of one or two parameters (using DnD API)
-        proxies.Map("/dnd/{first}", proxy => proxy.UseHttp((_, args) => $"https://www.dnd5eapi.co/api/{args["first"]}"));
-        proxies.Map("/dnd/{first}/{second}", proxy => proxy.UseHttp((_, args) => $"https://www.dnd5eapi.co/api/{args["first"]}/{args["second"]}"));
-
+        // Example of multiple parameters (using DnD API)
+        proxies.Map("/dnd/{**rest}", proxy => proxy.UseHttp((_, args) =>
+            $"https://www.dnd5eapi.co/api/{args["rest"]}"
+        ));
     });
+
 }
 
 ```
