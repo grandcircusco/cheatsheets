@@ -91,13 +91,26 @@ Template - donutdetail.component.html
 Code behind - donutdetail.component.ts
 
 ```ts
-<div *ngIf="whichdonut != null">
-    <h1>Donut Detail</h1>
-    Name: {{ whichdonut.name }}<br />
-    Calories: {{ whichdonut.calories }}<br />
-    <img src="{{ whichdonut.photo }}" /><br />
+import { Component, Input, OnInit } from '@angular/core';
 
-    <button (click)="test()">Test</button>
+@Component({
+  selector: 'app-donutdetail',
+  templateUrl: './donutdetail.component.html',
+  styleUrls: ['./donutdetail.component.css']
+})
+export class DonutdetailComponent implements OnInit {
 
-</div>
+  @Input() testnum = 0;
+  whichdonut = null;
+
+  constructor() {
+  }
+
+  ngOnInit(): void {
+  }
+
+  test() {
+    console.log(this.whichdonut);
+  }
+}
 ```
