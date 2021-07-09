@@ -105,7 +105,9 @@ This all happens behind the scenes by the various Angular JavaScript libraries.
 
 Further, there's a header that Angular and JavaScript set explaining to the server how the data is constructed:
 
+```
 content-type: multipart/form-data; boundary=----WebKitFormBoundaryioT2Jj0LmUbigQZZ
+```
 
 The first part says it's form data. The second part is a "boundary" that goes between each piece of form data.
 
@@ -114,11 +116,15 @@ which data.
 
 For the second part, Angular and JavaScript just passes a JSON object back to the server in string form like this:
 
+```js
 {"username":"jeffc","donut":1,"donutname":"Glazed"}
+```
 
 And it uses this content type:
 
+```
 content-type: application/json
+```
 
 On the server side, the ASP.NET Core reads the content-type to figure out what to do next.
 
@@ -129,5 +135,3 @@ attribute on the parameters, and calls the function.
 
 Or, if it sees application/json, it builds an actual object and passes that object into the function,
 as long as there is a "FromBody" attribute on the parameters.
-
-
