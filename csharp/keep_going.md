@@ -3,7 +3,6 @@ Here's the Keep Going function that we build together in class:
 ```cs
 static bool KeepGoing()
 {
-	// Version 0.04. (Agile Programming)
 	while (true)
 	{
 		// Print out message asking if user wants to continue
