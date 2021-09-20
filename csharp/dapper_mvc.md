@@ -68,3 +68,16 @@ Create a section of code comments describing the routes.
 * In the view, specify the model's type with the @model directive at the top
 * Display the data -- either just display it, or loop through a list, or prepopulate a form.
 
+Example; the controller action might look like this:
+
+```cs
+public IActionResult Index()
+{
+	List<Category> cats = DAL.GetAllCategories();
+	return View(cats);
+}
+```
+
+Pass the data into the View function. Then match the data's type in the view itself with the @model line:
+
+
