@@ -54,6 +54,9 @@ public static List<Department> GetAllDepartments()
 ### 5. Add a controller (You might need to add your model path to the controller file's ```using``` lines as in 
 ```using BusinessDemo.Models;```.)
 
+IMPORTANT! Name your controller file without a "1" after the word Controller. The default has a 1 because it tries to use HomeController.cs, which already exists.
+And so it tries using HomeController1.cs. The "1" will break! So name it, for example, BusinessController.cs, NOT BusinessController1.cs.
+
 Figure out your paths or routes. If you use index, you'll need to add a view for the Index one. 
 
 Create a section of code comments describing the routes.
