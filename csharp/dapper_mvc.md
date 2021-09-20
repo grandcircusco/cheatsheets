@@ -1,10 +1,22 @@
+First: Design your tables and create the SQL for them.
+
 ### 1. Create a new project of type ASP.NET Core Web App (Model-View-Controller)
+
+Save the .sql file in your project folder. (One way to do this is right-click in your project, do add new Text File, change the filename to your database dot sql as in morecoffee.sql) and then paste all your SQL into it.
 
 ### 2. Right-click Dependencies, click Manage NuGet Packages. Click the Browse tab. Add Dapper.Contrib and MySQL.Data
 
 ### 3. Create a model class for each table
 
-Always add the ```[table("tablename")]``` attribute before the class and the ```[Key]``` attribute before the primary key field.
+Right-click the Models folder and click Add Class. Tip: Make the class file name the same as the table it matches with.
+
+Add Dapper's using statement:
+
+```cs
+using Dapper.Contrib.Extensions;
+```
+
+Always add the ```[Table("tablename")]``` attribute before the class and the ```[Key]``` attribute before the primary key field.
 
 Make each field a property with ```{ get; set; }```
 
