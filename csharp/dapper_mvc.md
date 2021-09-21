@@ -1,3 +1,12 @@
+## Outline Overview
+
+1. Build the database in MySQL Workshop
+2. Create the model classes
+3. Create the DAL. Try to include CRUD operations for all the tables and any other similar operations you can think of based on the project requirements.
+4. Start building controllers. Think about the URLs you'll need to go into the controller. As you build the controllers, you'll be adding actions, some of which will require views.
+
+## Detailed Outline
+
 First: Design your tables and create the SQL for them.
 
 ### 1. Create a new project of type ASP.NET Core Web App (Model-View-Controller)
@@ -79,5 +88,7 @@ public IActionResult Index()
 ```
 
 Pass the data into the View function. Then match the data's type in the view itself with the @model line:
+
+You might encounter the need to send multiple objects to a view. You can send the additional objects through ViewData or ViewBag; or you can create another class that contains the objects, and use that class for your model.
 
 
