@@ -124,7 +124,7 @@ public void TestContains()
 ```
 
 Now here's how we can test whether an instance matches certain criteria, not necessarily an exact instance. (But be careful with this; think carefully **when** you would 
-use it. Remember, these tests run under a carefully controlled set of parameters. These are not user run-time tests.
+use it. Remember, these tests run under a carefully controlled set of parameters. These are not user run-time tests. One case you likely would need this is with database operations.)
 
 ```cs
 [Fact]
@@ -146,10 +146,6 @@ public void TestContains2()
 
 	// Test if the list contains sally regardless of whether
 	// it's the same original object
-	// Note, however, a caveat: We shouldn't have to do this.
-	// The reason is tha tour tests should be a highly-controlled
-	// environment. We know that we have a list that holds exact
-	// objects, not copies of the objects.
 	Assert.Contains<Person>(Person.AllItems, item =>
 	{
 		return item.Name == "Sally";
