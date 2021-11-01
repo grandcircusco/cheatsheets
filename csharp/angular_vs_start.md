@@ -24,7 +24,10 @@ Delete all three items from the routermodule
 ```ts
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-```      
+```   
+
+**Save the file**
+
 ### Expand the nav-menu folder and open its html file. Delete the last two of the LI elements:
 ```ts
 <li class="nav-item" [routerLinkActive]="['link-active']">
@@ -37,4 +40,7 @@ Delete all three items from the routermodule
   >
 </li>
 ```
-(Save the first one so you don't need to have to remember how to format this code)
+(Keep the first one so you don't need to have to remember how to format this HTML)
+
+**Save the file**
+
