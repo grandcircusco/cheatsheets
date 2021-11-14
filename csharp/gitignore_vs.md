@@ -2,7 +2,9 @@
 
 Make sure you always include a proper .gitignore file for your git repos before you commit anything to your repo. For Visual Studio, you will want to include the one found here:
 
-https://raw.githubusercontent.com/github/gitignore/master/VisualStudio.gitignore
+https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
+
+When you open the link, click on the "Raw" button.
 
 1. Place the file with the exact name ```.gitignore``` in the same folder that your solution .sln file sits. 
 2. Always add the .gitignore file itself to your repo.
