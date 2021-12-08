@@ -32,7 +32,13 @@ Add Dapper's using statement:
 using Dapper.Contrib.Extensions;
 ```
 
-Always add the ```[Table("tablename")]``` attribute before the class and the ```[Key]``` attribute before the primary key field.
+Always add the ```[Table("tablename")]``` attribute before the class.
+
+If you have an autoincrement primary key: Add the ```[Key]``` attribute before the primary key field.
+
+OR
+
+If your primary key is NOT an autoincrement, add the ```[ExplicitKey]``` attribute before the primary key field.
 
 Make each field a property with ```{ get; set; }```
 
