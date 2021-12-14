@@ -29,6 +29,12 @@ create table Orders (
 	quantity int
 )
 go
+SET IDENTITY_INSERT Customers ON
+go
+SET IDENTITY_INSERT Items ON
+go
+SET IDENTITY_INSERT Orders ON
+go
 insert into Customers 
 	(id, name, phone, contactname) values (1, 'Acme Hardware', '8005551212', 'Fred Franklin')
 go
