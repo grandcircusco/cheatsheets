@@ -31,10 +31,6 @@ create table Orders (
 go
 SET IDENTITY_INSERT Customers ON
 go
-SET IDENTITY_INSERT Items ON
-go
-SET IDENTITY_INSERT Orders ON
-go
 insert into Customers 
 	(id, name, phone, contactname) values (1, 'Acme Hardware', '8005551212', 'Fred Franklin')
 go
@@ -50,7 +46,10 @@ go
 insert into Customers 
 	(id, name, phone, contactname) values (5, 'Haberdasher Hattery', '6163213211', 'Larry Langman')
 go
-
+SET IDENTITY_INSERT Customers OFF
+go
+SET IDENTITY_INSERT Items ON
+go
 insert into Items
 	(id, name, price) values (1, 'Mouse', 25.00)
 go
@@ -72,7 +71,10 @@ go
 insert into Items
 	(id, name, price) values (7, 'iPhone Charger', 15.00)
 go
-
+SET IDENTITY_INSERT Items OFF
+go
+SET IDENTITY_INSERT Orders ON
+go
 insert into Orders
 	(id, ordernum, customerid, orderdate, itemid, quantity)
 	values (1, 1, 1, '2020-08-01', 1, 3)
@@ -108,6 +110,8 @@ go
 insert into Orders
 	(id, ordernum, customerid, orderdate, itemid, quantity)
 	values (9, 7, 4, '2020-08-05', 7, 1)
+go
+SET IDENTITY_INSERT Orders OFF
 go
 ```
 
