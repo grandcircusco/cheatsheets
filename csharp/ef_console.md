@@ -6,6 +6,8 @@ Add NuGet packages:
 * Microsoft.EntityFrameworkCore.SqlServer
 * Microsoft.EntityFrameworkCore.Design
 
+*Note: If you're using an older version of .NET Core (such as 3.1), you need to specify the corresponding version when you install the packages. When you click on a package in the NuGet browse tab, there's a Version dropdown box from which you can make your selection. Otherwise the package might not install without any immediate explanation.*
+
 You can do this via NuGet inside Visual Studio or via the dotnet command as follows:
 
 ```
