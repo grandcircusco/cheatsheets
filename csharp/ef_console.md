@@ -28,6 +28,8 @@ Then add code in the main that accesses the data such as in the example shown be
 
 **Tip: This is one place where you absolutely must use properties rather than regular member variables, even if they just have default { get; set; }.**
 
+**Tip 2: The using statement inside the main below is handy because it automatically cleans up resources after the code inside it runs. This is a completely different use of the "using" keyword from the first three lines of the code below.**
+
 ```cs
 using System;
 using Microsoft.EntityFrameworkCore;
