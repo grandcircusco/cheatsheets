@@ -26,6 +26,8 @@ Add the appropriate using statements:
 
 Then add code in the main that accesses the data such as in the example shown below.
 
+**Tip: This is one place where you absolutely must use properties rather than regular member variables, even if they just have default { get; set; }.**
+
 ```cs
 using System;
 using Microsoft.EntityFrameworkCore;
