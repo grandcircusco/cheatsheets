@@ -19,6 +19,7 @@ create table Product (
 
 	constraint fk_product_category foreign key (category_id) references Category(id)
 )
+go
 
 insert into category (id, name, description, location) values ('PRODUCE', 'Fruit and Veggies', 'Fresh fruit and vegetables', 'A16')
 insert into category (id, name, description, location) values ('DAIRY','Dairy and Eggs','Dairy products plus eggs','A10')
@@ -38,3 +39,4 @@ insert into product (name, description, price, inventory, category_id) values ('
 insert into product (name, description, price, inventory, category_id) values ('Garlic Toast','Crispy and Savory',5.99,6,'FROZEN')
 insert into product (name, description, price, inventory, category_id) values ('French Fries','Perfect like Fast Food',6.99,5,'FROZEN')
 insert into product (name, description, price, inventory, category_id) values ('Thousand Island','Creamy and Tasty',4.35,6,'CONDIMENTS')
+go
