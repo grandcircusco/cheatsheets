@@ -21,6 +21,37 @@ the instance. The code below will use this concept.
 
 ## UNDER CONSTRUCTION, REST COMING SOON...
 
+Setting up webclient:
+
+```cs
+public class DogAPI
+{
+
+	private static HttpClient _realClient = null;
+	public static HttpClient MyHttp
+	{
+		get
+		{
+			if (_realClient == null)
+			{
+				_realClient = new HttpClient();
+				_realClient.BaseAddress = new Uri("https://api.thedogapi.com/v1/"); // ADD YOUR OWN BASE ADDRESS HERE
+				_realClient.DefaultRequestHeaders.Add("x-api-key",   // REPLACE WITH YOUR OWN API KEY STUFF
+					"9a576995-4641-4b6b-9026-d14cf814ea57");
+			}
+			return _realClient;
+		}
+	}
+
+	public static async Task<List<Breed>> GetBreeds(int count)
+	{
+		var connection = await MyHttp.GetAsync($"breeds?limit={count}");
+		List<Breed> breeds = await connection.Content.ReadAsAsync<List<Breed>>();
+		return breeds;
+	}
+}
+```
+
 ```cs
 using System;
 using System.Net.Http;
