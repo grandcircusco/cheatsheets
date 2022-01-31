@@ -8,6 +8,10 @@
   * `ls -a` - `-a` option shows all, including hidden files
   * `ls -la` - combine multiple options
 * `cd <folder path>` - change directory
+* `cd ..` - change to parent directory
+* `cd ~` - change to home directory
+
+Hint: Use TAB key for autocompletion of folder and file names.
 
 ### Folder Manipulation
 
