@@ -47,10 +47,25 @@ builder.Services.AddCors(options =>
 		options.AddPolicy(name: "LocalOriginsPolicy",
 			builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
 		);
-		}
-	);
+	}
+);
 ```
-then add this further down like normal
+then add a UseCors line below (this MUST be somewhere before the app.Run() call):
 ```cs
+var app = builder.Build();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+	app.UseSwagger();
+	app.UseSwaggerUI();
+}
+
+// Add the following!
 app.UseCors("LocalOriginsPolicy");
+// Add the Above!
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
 ```
