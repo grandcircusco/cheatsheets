@@ -1,6 +1,6 @@
-To allow CORS from your server-side app, open Startup.cs.
-
 ## For .NET 3.1
+
+To allow CORS from your server-side app, open Startup.cs.
 
 First, add the commented lines to your ConfigureServices function:
 
@@ -43,10 +43,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 Put this into the program.cs:
 ```cs
 builder.Services.AddCors(options =>
-		{
-			options.AddPolicy(name: "LocalOriginsPolicy",
-					builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-					  );
+	{
+		options.AddPolicy(name: "LocalOriginsPolicy",
+			builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+		);
 		}
 	);
 ```
