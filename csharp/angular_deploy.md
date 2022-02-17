@@ -44,7 +44,7 @@ Now your angular app is ready.
 
 ## On the server side (Do this only once):
 
-Open Startup.cs, and find the Configure function. Add the following three lines if they aren't already there:
+Open Startup.cs, and find the Configure function. Add the following two lines if they aren't already there:
 
 ```cs
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -54,11 +54,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		app.UseDeveloperExceptionPage();
 	}
 
-	app.UseCors("LocalOriginsPolicy"); // <--- ADD THIS
+	app.UseCors("LocalOriginsPolicy"); // (This came from the cheatsheet called CORS_CS_configuration.md)
 
-	app.UseDefaultFiles(); // <--- ADD THIS
+	app.UseDefaultFiles(); // <--- ADD THIS ******
 
-	app.UseStaticFiles(); // <--- ADD THIS
+	app.UseStaticFiles(); // <--- ADD THIS ******
 	
 ```
 
