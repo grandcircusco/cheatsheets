@@ -2,11 +2,11 @@
 
 ### 1. CREATE & DOWNLOAD FROM START.SPRING.IO
 * Browse to [https://start.spring.io](https://start.spring.io)
-* For WAR...
-  * Expand "Options".
-  * Change Packaging from Jar to War.
+* Select Gradle Project
 * Enter a group name, e.g. co.grandcircus
 * Enter an artifact name, e.g. spring-lab
+* Change Packaging from Jar to War.
+* Pick the latest Java Version if you have it.
 * Add Dependencies: Spring *Web*, Spring Boot *DevTools*
 * Click Generate Project. It will download a ZIP file.
 * Unzip the file. This will create a folder.
@@ -14,25 +14,22 @@
 
 ### 2. IMPORT INTO ECLIPSE
 * In Eclipse, select File > Import
-* Select Existing Maven Projects
-* For Root Directory, select the unzipped folder that you downloaded. Click finish.
+* Select Existing Gradle Project
+* For Project root rirectory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
-### 3. ADD MAVEN DEPENDENCIES
-* Open `pom.xml`. Select the pom.xml sub-tab at the bottom (if applicable). Within the `<dependencies>` tag, add the following
+### 3. ADD GRADLE DEPENDENCIES
+* Open `build.gradle`. Within the `dependencies {}` section, add the following
 
-```xml
-<!-- Added for JSP Rendering -->
-<dependency>
-	<groupId>javax.servlet</groupId>
-	<artifactId>jstl</artifactId>
-</dependency>
-<dependency>
-	<groupId>org.apache.tomcat.embed</groupId>
-	<artifactId>tomcat-embed-jasper</artifactId>
-	<scope>provided</scope>
-</dependency>
+```groovy
+// added for JSP rendering
+providedRuntime 'javax.servlet:jstl'
+providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 ```
+
+To apply these changes...
+* Right-click `build.gradle`
+* Select Gradle... Refresh Gradle Project
 
 ### 4. CONFIGURE APPLICATION.PROPERTIES
 * Open `src/main/resources/application.properties`.
@@ -59,4 +56,10 @@ spring.mvc.view.suffix=.jsp
 
 ```xml
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 ```
+
+### 7. START SERVER
+* Select the `___Application.java` file.
+* Right-click. Select Run As... Java Application.
+* Visit http://localhost:8080 in your browser.

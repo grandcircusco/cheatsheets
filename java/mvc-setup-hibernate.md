@@ -2,36 +2,49 @@
 
 ### 1. CREATE & DOWNLOAD FROM START.SPRING.IO
 * Browse to [https://start.spring.io](https://start.spring.io)
-* For WAR...
-  * Expand "Options".
-  * Change Packaging from Jar to War.
+* Select Gradle Project
 * Enter a group name, e.g. co.grandcircus
 * Enter an artifact name, e.g. spring-lab
-* Add Dependencies: Spring **Web, Spring Boot DevTools, MySQL Driver, Spring Data JPA**
+* Change Packaging from Jar to War.
+* Pick the latest Java Version if you have it.
+* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, *MySQL* Driver, Spring Data *JPA*
 * Click Generate Project. It will download a ZIP file.
 * Unzip the file. This will create a folder.
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
 
 ### 2. IMPORT INTO ECLIPSE
 * In Eclipse, select File > Import
-* Select Existing Maven Projects
-* For Root Directory, select the unzipped folder that you downloaded. Click finish.
+* Select Existing Gradle Project
+* For Project root rirectory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
-### 3. ADD MAVEN DEPENDENCIES
-* Open `pom.xml`. Select the pom.xml sub-tab at the bottom (if applicable). Within the `<dependencies>` tag, add the following
+### 3. ADD GRADLE DEPENDENCIES
+* Open `build.gradle`. Within the `dependencies {}` section, add the following
 
-```xml
-<!-- Added for JSP Rendering -->
-<dependency>
-	<groupId>javax.servlet</groupId>
-	<artifactId>jstl</artifactId>
-</dependency>
-<dependency>
-	<groupId>org.apache.tomcat.embed</groupId>
-	<artifactId>tomcat-embed-jasper</artifactId>
-	<scope>provided</scope>
-</dependency>
+```groovy
+// added for JSP rendering
+providedRuntime 'javax.servlet:jstl'
+providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
+```
+
+To apply these changes...
+* Right-click `build.gradle`
+* Select Gradle... Refresh Gradle Project
+
+### 4. CONFIGURE APPLICATION.PROPERTIES
+* Open `src/main/resources/application.properties`.
+* Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
+  * Change the database schema (`db_demos`) if need be.
+  * Change the password to your MySQL password.
+
+```
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+# Database Connection
+spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
+spring.datasource.username=root
+spring.datasource.password=password
 ```
 
 ### 4. CONFIGURE APPLICATION.PROPERTIES
@@ -132,7 +145,7 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 
 ```xml
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 ```
 ### 9. WIRE DAO TO CONTROLLER
@@ -146,12 +159,8 @@ For example:
 private FlowerRepository rep;
 ```
 
-### 10. CREATE A RUN CONFIGURATION
-* Right-click on the application java file
-* Click properties
-* Click New
-* Click Java Application
-* Should have everything filled in; the name of the project and the file you just clicked on
-* Click OK
-* Click Apply and Close
+### 7. START SERVER
+* Select the `___Application.java` file.
+* Right-click. Select Run As... Java Application.
+* Visit http://localhost:8080 in your browser.
 
