@@ -115,7 +115,7 @@ For example:
 private FlowerRepository repo;
 ```
 
-### 7. START SERVER
+### 10. START SERVER
 * Select the `___Application.java` file.
 * Right-click. Select Run As... Java Application.
 * Visit http://localhost:8080 in your browser.
