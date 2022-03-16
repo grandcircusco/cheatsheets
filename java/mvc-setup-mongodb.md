@@ -15,7 +15,7 @@
 ### 2. IMPORT INTO ECLIPSE
 * In Eclipse, select File > Import
 * Select Existing Gradle Project
-* For Project root rirectory, select the unzipped folder that you downloaded. Click finish.
+* For Project root directory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
 ### 3. ADD GRADLE DEPENDENCIES
