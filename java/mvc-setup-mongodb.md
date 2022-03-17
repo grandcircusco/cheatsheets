@@ -73,7 +73,7 @@ private String id;
 * Include a full constructor with all members and a default constructor with no params
 
 ### 6. CREATE A REPOSITORY
-*WARNING*: For this step, you must create your DAO/Repository in the main package or in a subpackage of the main package of your app.
+*WARNING*: For this step, you must create your Repository in the main package or in a subpackage of the main package of your app.
 
 * In `src/main/java`, inside your package, create a new Java interface.
 * Name it `<Something>Repository`
@@ -84,7 +84,7 @@ public interface FlowerRepository extends MongoRepository<Flower, String> {
 
 }
 ```
-* Leave the body of the interface empty for now. It inherits all the methods you need to start; these methods are created automatically by the JPA (which is not typical for interfaces -- normally you create the implementations of the interfaces).
+* Leave the body of the interface empty for now. It inherits all the methods you need to start; these methods are created automatically by Spring Data (which is not typical for interfaces -- normally you create the implementations of the interfaces).
 
 ### 7. CREATE A CONTROLLER
 * In `src/main/java`, inside your package, create a new Java file.
