@@ -7,7 +7,7 @@
 * Enter an artifact name, e.g. spring-lab
 * Change Packaging from Jar to War.
 * Pick the latest Java Version if you have it.
-* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, Spring Data *MongoDB*
+* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, **Spring Data *MongoDB***
 * Click Generate Project. It will download a ZIP file.
 * Unzip the file. This will create a folder.
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
