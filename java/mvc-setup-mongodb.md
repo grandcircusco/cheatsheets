@@ -41,7 +41,8 @@ spring.mvc.view.suffix=.jsp
 ```
 
 #### 4b. SECRET APPLICATION.PROPERTIES
-If you have any passwords or API keys or anything that should be different between group project members, create an additional config/application.properties and .gitignore it. Your mongo connection URI should go here.
+Create an additional config/application.properties and .gitignore it. Your mongo connection URI should go here.
+This is also a good place for any passwords or API keys or anything that should be different between group project members.
 
 * Inside `src/main/resources`, create a new Folder called `config`.
 * Inside the `config` folder create a new File called `application.properties`.
