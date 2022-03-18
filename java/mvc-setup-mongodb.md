@@ -75,7 +75,7 @@ private String id;
 ### 6. CREATE A REPOSITORY
 *WARNING*: For this step, you must create your Repository in the main package or in a subpackage of the main package of your app.
 
-* In `src/main/java`, inside your package, create a new Java interface.
+* In `src/main/java`, inside your package, create a new Java **interface**.
 * Name it `<Something>Repository`
 * It must extend `MongoRepository` using generic parameters for the entity type and the entity's ID type. For example, my entity is `Flower` and it has an ID of type `String`...
 
