@@ -18,7 +18,7 @@
 * For Project root directory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
-#### 3. SECRET APPLICATION.PROPERTIES
+### 3. SECRET APPLICATION.PROPERTIES
 Create an additional ``config/application.properties`` and .gitignore it. Your mongo connection URI should go here.
 This is also a good place for any passwords or API keys or anything that should be different between group project members.
 
