@@ -7,6 +7,8 @@ This is a full API producer, implementing full CRUD.
 ```java
 package co.grandcircus.AvengersApi;
 
+import java.util.List;
+
 import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -18,13 +20,15 @@ public class AvCharacter {
 	private String name;
 	private Integer strength;
 	private Boolean good;
+	private List<String> skills;
 	
 	public AvCharacter() {}
 	
-	public AvCharacter(String name, Integer strength, Boolean good) {
+	public AvCharacter(String name, Integer strength, Boolean good, List<String> skills) {
 		this.name = name;
 		this.strength = strength;
 		this.good = good;
+		this.skills = skills;
 	}
 	
 	// Getters and Setters
@@ -60,6 +64,14 @@ public class AvCharacter {
 		this.good = good;
 	}
 	
+	public List<String> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<String> skills) {
+		this.skills = skills;
+	}
+
 }
 ```
 
@@ -82,10 +94,10 @@ public interface CharacterRepository extends MongoRepository<AvCharacter, String
 ```java
 package co.grandcircus.AvengersApi;
 
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
 @RestController
@@ -102,22 +114,22 @@ public class CharacterController {
 		
 		// Add characters
 		
-		AvCharacter ac = new AvCharacter("Iron Man",8,true);
+		AvCharacter ac = new AvCharacter("Iron Man",8,true, Arrays.asList("flying", "fighting", "intelligence"));
 		ch_repo.insert(ac);
 		
-		ac = new AvCharacter("Thor",9,true);
+		ac = new AvCharacter("Thor",9,true, Arrays.asList("fighting", "strength"));
 		ch_repo.insert(ac);
 		
-		ac = new AvCharacter("Hulk",10,true);
+		ac = new AvCharacter("Hulk",10,true, Arrays.asList("fighting", "strength", "jumping"));
 		ch_repo.insert(ac);
 		
-		ac = new AvCharacter("Black Panther",8,true);
+		ac = new AvCharacter("Black Panther",8, true, Arrays.asList("stealth", "intelligence", "fighting"));
 		ch_repo.insert(ac);
 
-		ac = new AvCharacter("Dr. Strange",7,true);
+		ac = new AvCharacter("Dr. Strange",7,true, Arrays.asList("magic", "intelligence"));
 		ch_repo.insert(ac);
 		
-		ac = new AvCharacter("Thanos",9,false);
+		ac = new AvCharacter("Thanos",9,false, Arrays.asList("strength", "intelligence"));
 		ch_repo.insert(ac);
 		
 		return "Data reset.";
@@ -127,8 +139,13 @@ public class CharacterController {
 	// C(R)UD -- Read All
 	
 	@GetMapping("/character")
-	public List<AvCharacter> readAll() {
-		return ch_repo.findAll();
+	public List<AvCharacter> readAll(@RequestParam(required=false) String skill) {
+		if (skill != null) {
+			return ch_repo.findBySkills(skill);
+		}
+		else {
+			return ch_repo.findAll();
+		}
 	}
 	
 	// C(R)UD -- Read One
