@@ -1,6 +1,6 @@
-create database businessdemo
+create database bigbusiness
 go
-use businessdemo
+use bigbusiness
 go
 create table employee (
     id int identity primary key,
@@ -12,10 +12,17 @@ create table employee (
     department varchar(8)
 )
 go
+create table location (
+    id int identity primary key,
+    name nvarchar(30) not null,
+    city nvarchar(20),
+    state char(2)
+)
+go
 create table department (
     id varchar(8) primary key,
     name varchar(50),
-    location varchar(50)
+    location int
 )
 go
 set identity_insert employee on
@@ -74,17 +81,29 @@ insert into employee (id, firstname, lastname, phone, email, salary, department)
 go
 set identity_insert employee off
 go
-insert into department (id, name, location) values ('ACCT','Accounting','Detroit');
+set identity_insert location on
 go
-insert into department (id, name, location) values ('ADMIN','Administration','Detroit');
+insert into location (id, name, city, state) values (1, 'Main Building', 'Detroit', 'MI')
 go
-insert into department (id, name, location) values ('CSR','Customer Service','Southfield');
+insert into location (id, name, city, state) values (2, 'Central', 'Lansing', 'MI')
 go
-insert into department (id, name, location) values ('HR','Human Resources','Southfield');
+insert into location (id, name, city, state) values (3, 'West Side', 'Grand Rapids', 'MI')
 go
-insert into department (id, name, location) values ('IT','Information Technology','Grand Rapids');
+insert into location (id, name, city, state) values (4, 'Home/Remote', '', '')
 go
-insert into department (id, name, location) values ('MGT','Management','Southfield');
+set identity_insert location off
 go
-insert into department (id, name, location) values ('SALES','Sales','Southfield');
+insert into department (id, name, location) values ('ACCT','Accounting',1);
+go
+insert into department (id, name, location) values ('ADMIN','Administration',1);
+go
+insert into department (id, name, location) values ('CSR','Customer Service',2);
+go
+insert into department (id, name, location) values ('HR','Human Resources',2);
+go
+insert into department (id, name, location) values ('IT','Information Technology',4);
+go
+insert into department (id, name, location) values ('MGT','Management',3);
+go
+insert into department (id, name, location) values ('SALES','Sales',3);
 go
