@@ -84,7 +84,13 @@ namespace efconsole2
 }
 ```
 
-Next, In DOS or BASH shell, switch to directory containing the csproj file. Then type the following two commands:
+## If you're doing Code First
+
+(If you've already created your tables using SSMS, you can skip this part.)
+
+This next is necessary to create the tables from your code.
+
+In DOS or BASH shell, switch to directory containing the csproj file. Then type the following two commands:
 ```
 dotnet ef migrations add CreateSchool
 dotnet ef database update
