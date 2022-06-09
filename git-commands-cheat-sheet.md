@@ -9,7 +9,7 @@
    3. `git add .` to add all the files in the project to the staging area. Or `git add <file/folder>` to add a specific file or folder. Include the name or path of the file or folder. Do not include the angle brackets (<, >).
    4. `git commit -m 'initial commit'` to make the first commit.
 
-2. On GitHub.com, log in and create a new repository. Give it a name, such as "Lab2", and leave all the other options as they are.
+2. On GitHub.com, log in and create a new repository. Give it a name, such as "amazing-daisy-lab", and leave all the other options as they are.
 
 3. Copy all lines under "…or push an existing repository from the command line" on GitHub, paste them on the command line, and press ENTER.
 
