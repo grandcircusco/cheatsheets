@@ -7,7 +7,7 @@
 * Enter an artifact name, e.g. spring-lab
 * Change Packaging from Jar to War.
 * Pick the latest Java Version if you have it.
-* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, *MySQL* Driver, Spring Data *JPA*
+* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, *MySQL* Driver, **Spring Data *JPA***
 * Click Generate Project. It will download a ZIP file.
 * Unzip the file. This will create a folder.
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
@@ -15,7 +15,7 @@
 ### 2. IMPORT INTO ECLIPSE
 * In Eclipse, select File > Import
 * Select Existing Gradle Project
-* For Project root rirectory, select the unzipped folder that you downloaded. Click finish.
+* For Project root directory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
 ### 3. ADD GRADLE DEPENDENCIES
@@ -40,31 +40,9 @@ To apply these changes...
 ```
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
-
-# Database Connection
-spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
-spring.datasource.username=root
-spring.datasource.password=password
-```
-
-### 4. CONFIGURE APPLICATION.PROPERTIES
-* Open `src/main/resources/application.properties`.
-* Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
-  * Change the database schema (`db_demos`) if need be.
-  * Change the password to your MySQL password.
-
-```
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
 # This next line is optional, but recommended. You will probably want to give each app a different server port.
 # If you want to use this line, uncomment it by removing the #
 #server.port=8081
-
-# Database Connection
-# Update this with your own IP (if not localhost), and your username and password
-spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
-spring.datasource.username=root
-spring.datasource.password=password
 
 # This optional property indicates whether hibernate automatically creates database tables for us
 # Set it to create or update, start the app, then set it back to none.
@@ -83,6 +61,8 @@ If you have any passwords or API keys or anything that should be different betwe
 * Add your database connection info here. For example:
 
 ```
+# Database Connection
+# Update this with your own IP (if not localhost), and your username and password
 spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
 spring.datasource.username=root
 spring.datasource.password=password
@@ -156,7 +136,7 @@ For example:
 
 ```
 @Autowired
-private FlowerRepository rep;
+private FlowerRepository repo;
 ```
 
 ### 7. START SERVER
