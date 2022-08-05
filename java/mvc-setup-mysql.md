@@ -48,7 +48,7 @@ spring.mvc.view.suffix=.jsp
 # Set it to create or update, start the app, then set it back to none.
 spring.jpa.hibernate.ddl-auto=none
 # If using ddl-auto, be sure to specify this dialect for MySQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 # If you want to see the SQL statements being sent to the server, uncomment the following line:
 #logging.level.org.hibernate.SQL=DEBUG
 ```
@@ -139,7 +139,7 @@ For example:
 private FlowerRepository repo;
 ```
 
-### 7. START SERVER
+### 10. START SERVER
 * Select the `___Application.java` file.
 * Right-click. Select Run As... Java Application.
 * Visit http://localhost:8080 in your browser.
