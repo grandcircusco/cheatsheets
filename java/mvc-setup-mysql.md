@@ -7,7 +7,7 @@
 * Enter an artifact name, e.g. spring-lab
 * Change Packaging from Jar to War.
 * Pick the latest Java Version if you have it.
-* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, *MySQL* Driver, **Spring Data *JPA***
+* Add Dependencies: Spring *Web*, Spring Boot *DevTools*, ***MySQL* Driver**, **Spring Data *JPA***
 * Click Generate Project. It will download a ZIP file.
 * Unzip the file. This will create a folder.
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
@@ -38,27 +38,20 @@ To apply these changes...
 ```
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
-# This next line is optional, but recommended. You will probably want to give each app a different server port.
+# This next line is optional. If you want to run multiple servers at once, give each app a different server port.
 # If you want to use this line, uncomment it by removing the #
 #server.port=8081
-```
 
-#### 4a. CONFIGURE DDL-AUTO TO BUILD YOUR TABLES (OPTIONAL)
-* Open `src/main/resources/application.properties`.
-* Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
-
-```
 # This optional property indicates whether hibernate automatically creates schema tables for us
 # Set it to create or update, start the app, then set it back to none.
 spring.jpa.hibernate.ddl-auto=none
 # If using ddl-auto, be sure to specify this dialect for MySQL
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
-# If you want to see the SQL statements being sent to the server, uncomment the following line:
-#logging.level.org.hibernate.SQL=DEBUG
+spring.jpa.properties.hibernate.dialect.storage_engine=innodb
 ```
 
-#### 4b. SECRET APPLICATION.PROPERTIES (OPTIONAL)
-If you have any passwords or API keys or anything that should be different between group project members, create an additional `config/application.properties` and `.gitignore` it.
+#### 4b. SECRET APPLICATION.PROPERTIES
+If you have any database passwords or API keys or anything that should be different between group project members, create an additional `config/application.properties` and `.gitignore` it.
 
 * Inside `src/main/resources`, create a new Folder called `config`.
 * Inside the `config` folder create a new File called `application.properties`.
@@ -68,7 +61,7 @@ If you have any passwords or API keys or anything that should be different betwe
 
 ```
 # Database Connection
-# Update this with your own IP (if not localhost), and your username and password
+# Update this with your own IP (if not localhost), schema, and your username and password
 spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
 spring.datasource.username=root
 spring.datasource.password=password
@@ -78,10 +71,9 @@ spring.datasource.password=password
 
 ### 5. CREATE A DATA CLASS (called an entity)
 * In `src/main/java`, inside your package, create a new Java class.
-* Add these two annotations before the class: (All of these annotations are in the `javax.persistence` package.)
+* Add this annotation before the class: (All of these annotations are in the `javax.persistence` package.)
 ```
 @Entity
-@Table(name="flower") // Or whatever table name you want
 public class Flower {
 ```
 * If you want an autoincrement identity column, add this inside the class:
@@ -92,10 +84,9 @@ private long id;
 ```
 * Include a full constructor with all members and a default constructor with no params
 
-### 6. CREATE A DAO
-*WARNING*: For this step, you must create your DAO/Repository in the main package or in a subpackage of the main package of your app.
+### 6. CREATE A REPOSITORY
+*WARNING*: For this step, you must create your Repository in the main package or in a subpackage of the main package of your app.
 
-#### Option 1: Using JpaRepository
 * In `src/main/java`, inside your package, create a new Java interface.
 * Name it `<Something>Repository`
 * It must extend `JpaRepository` using generic parameters for the entity type and the entity's ID type. For example, my entity is `Flower` and it has an ID of type `Long`...
@@ -106,14 +97,6 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 }
 ```
 * Leave the body of the interface empty for now. It inherits all the methods you need to start; these methods are created automatically by the JPA (which is not typical for interfaces -- normally you create the implementations of the interfaces).
-
-#### Option 2: Using EntityManager
-* In `src/main/java`, inside your package, create a new Java class.
-* Name it `<Something>Dao`.
-* Annotate the class with `@Repository` and `@Transactional`
-* Create a private field of type `EntityManager` named `em`. Annotate this field with `@PersistenceContext`.
-* Create public methods for each of your schema operations.
-* (`@Transactional`, `PersistenceContext`, and `EntityManager` are in the `javax.persistence` package.)
 
 ### 7. CREATE A CONTROLLER
 * In `src/main/java`, inside your package, create a new Java file.
