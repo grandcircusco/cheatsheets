@@ -80,7 +80,7 @@ public class Flower {
 ```
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private long id;
+private Long id;
 ```
 * Include a full constructor with all members and a default constructor with no params
 
