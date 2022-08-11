@@ -34,8 +34,6 @@ To apply these changes...
 ### 4. CONFIGURE APPLICATION.PROPERTIES
 * Open `src/main/resources/application.properties`.
 * Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
-  * Change the database schema (`db_demos`) if need be.
-  * Change the password to your MySQL password.
 
 ```
 spring.mvc.view.prefix=/WEB-INF/views/
@@ -43,8 +41,14 @@ spring.mvc.view.suffix=.jsp
 # This next line is optional, but recommended. You will probably want to give each app a different server port.
 # If you want to use this line, uncomment it by removing the #
 #server.port=8081
+```
 
-# This optional property indicates whether hibernate automatically creates database tables for us
+#### 4a. CONFIGURE DDL-AUTO TO BUILD YOUR TABLES (OPTIONAL)
+* Open `src/main/resources/application.properties`.
+* Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
+
+```
+# This optional property indicates whether hibernate automatically creates schema tables for us
 # Set it to create or update, start the app, then set it back to none.
 spring.jpa.hibernate.ddl-auto=none
 # If using ddl-auto, be sure to specify this dialect for MySQL
@@ -54,11 +58,13 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ```
 
 #### 4b. SECRET APPLICATION.PROPERTIES (OPTIONAL)
-If you have any passwords or API keys or anything that should be different between group project members, create an additional config/application.properties and .gitignore it.
+If you have any passwords or API keys or anything that should be different between group project members, create an additional `config/application.properties` and `.gitignore` it.
 
 * Inside `src/main/resources`, create a new Folder called `config`.
 * Inside the `config` folder create a new File called `application.properties`.
 * Add your database connection info here. For example:
+  * Change the schema (`db_demos`) if need be.
+  * Change the password to your MySQL password.
 
 ```
 # Database Connection
@@ -106,7 +112,7 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 * Name it `<Something>Dao`.
 * Annotate the class with `@Repository` and `@Transactional`
 * Create a private field of type `EntityManager` named `em`. Annotate this field with `@PersistenceContext`.
-* Create public methods for each of your database operations.
+* Create public methods for each of your schema operations.
 * (`@Transactional`, `PersistenceContext`, and `EntityManager` are in the `javax.persistence` package.)
 
 ### 7. CREATE A CONTROLLER
