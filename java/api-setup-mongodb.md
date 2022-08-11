@@ -67,10 +67,9 @@ public interface FlowerRepository extends MongoRepository<Flower, String> {
 ### 6. CREATE A CONTROLLER
 * In `src/main/java`, inside your package, create a new Java file.
 * Name it `<Something>Controller`.
-* Annotate the class with `@Controller`
-* Add a method that returns a `String`.
-* Annotate the method with `@RequestMapping("/some-url-path")`, using the URL path you want for this page (`"/"` for the home page.
-* Return a String that gives the name of your view JSP file without the ".jsp" extension.
+* Annotate the class with `@RestController`
+* Add methods that return various kinds of data such as model objects, lists of objects, or void.
+* Annotate the method with `@GetMapping("/some-url-path")`, `@PostMapping("/some-url-path")`, `@PutMapping("/some-url-path")`, `@DeleteMapping("/some-url-path")`, or `@PatchMapping("/some-url-path")`, using the URL path you want for this page (`"/"` for the root.
 
 ### 7. WIRE REPOSITORY TO CONTROLLER
 * In your Controller, add a private field with the type of your Dao. Annotate this field with `@Autowired`.

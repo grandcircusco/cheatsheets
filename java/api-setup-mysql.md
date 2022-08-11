@@ -18,26 +18,11 @@
 * For Project root directory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
-### 3. ADD GRADLE DEPENDENCIES
-* Open `build.gradle`. Within the `dependencies {}` section, add the following
-
-```groovy
-// added for JSP rendering
-providedRuntime 'javax.servlet:jstl'
-providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
-```
-
-To apply these changes...
-* Right-click `build.gradle`
-* Select Gradle... Refresh Gradle Project
-
-### 4. CONFIGURE APPLICATION.PROPERTIES
+### 3. CONFIGURE APPLICATION.PROPERTIES
 * Open `src/main/resources/application.properties`.
 * Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
 
 ```
-spring.mvc.view.prefix=/WEB-INF/views/
-spring.mvc.view.suffix=.jsp
 # This next line is optional. If you want to run multiple servers at once, give each app a different server port.
 # If you want to use this line, uncomment it by removing the #
 #server.port=8081
@@ -49,7 +34,7 @@ spring.jpa.hibernate.ddl-auto=none
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ```
 
-#### 4b. SECRET APPLICATION.PROPERTIES
+#### 3b. SECRET APPLICATION.PROPERTIES
 If you have any database passwords or API keys or anything that should be different between group project members, create an additional `config/application.properties` and `.gitignore` it.
 
 * Inside `src/main/resources`, create a new Folder called `config`.
@@ -68,7 +53,7 @@ spring.datasource.password=password
 * Open `.gitignore`. You may need to open the Navigator view in Eclipse to see this hidden file.
 * At the bottom of `.gitignore`, add this line: `src/main/resources/config/application.properties`.
 
-### 5. CREATE A DATA CLASS (called an entity)
+### 4. CREATE A DATA CLASS (called an entity)
 * In `src/main/java`, inside your package, create a new Java class.
 * Add this annotation before the class: (All of these annotations are in the `javax.persistence` package.)
 ```
@@ -83,7 +68,7 @@ private Long id;
 ```
 * Include a full constructor with all members and a default constructor with no params
 
-### 6. CREATE A REPOSITORY
+### 5. CREATE A REPOSITORY
 *WARNING*: For this step, you must create your Repository in the main package or in a subpackage of the main package of your app.
 
 * In `src/main/java`, inside your package, create a new Java interface.
@@ -97,26 +82,14 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 ```
 * Leave the body of the interface empty for now. It inherits all the methods you need to start; these methods are created automatically by the JPA (which is not typical for interfaces -- normally you create the implementations of the interfaces).
 
-### 7. CREATE A CONTROLLER
+### 6. CREATE A CONTROLLER
 * In `src/main/java`, inside your package, create a new Java file.
 * Name it `<Something>Controller`.
-* Annotate the class with `@Controller`
-* Add a method that returns a `String`.
-* Annotate the method with `@RequestMapping("/some-url-path")`, using the URL path you want for this page (`"/"` for the home page.
-* Return a String that gives the name of your view JSP file without the ".jsp" extension.
+* Annotate the class with `@RestController`
+* Add methods that return various kinds of data such as model objects, lists of objects, or void.
+* Annotate the method with `@GetMapping("/some-url-path")`, `@PostMapping("/some-url-path")`, `@PutMapping("/some-url-path")`, `@DeleteMapping("/some-url-path")`, or `@PatchMapping("/some-url-path")`, using the URL path you want for this page (`"/"` for the root.
 
-### 8. CREATE A VIEW
-* In `src/main` create three nested folders: **`webapp/WEB-INF/views`**. (HINT: A common mistake is to put this in src rather than src/main. Also if you copy-paste, use care that the folders you create do not contain leading or trailing spaces.)
-* Within this views folder, select New > Other…. Select JSP File. * Select a filename that matches the name you returned from your controller, but has the ".jsp" extension.
-* Within this JSP, use EL (e.g. `${model}`).
-* Optionally, add the JSTL library by adding the following code at the top of the file.
-
-```xml
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-```
-### 9. WIRE DAO TO CONTROLLER
+### 7. WIRE DAO TO CONTROLLER
 * In your Controller, add a private field with the type of your Dao. Annotate this field with `@Autowired`.
 * Within your controller methods, use this field to access the methods on your DAO.
 
@@ -127,7 +100,7 @@ For example:
 private FlowerRepository repo;
 ```
 
-### 10. START SERVER
+### 8. START SERVER
 * Select the `___Application.java` file.
 * Right-click. Select Run As... Java Application.
 * Visit http://localhost:8080 in your browser.
