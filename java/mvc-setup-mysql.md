@@ -133,3 +133,10 @@ private FlowerRepository repo;
 * Right-click. Select Run As... Java Application.
 * Visit http://localhost:8080 in your browser.
 
+### AUTOMATICALLY CREATE DATABASE TABLES (OPTIONAL)
+After you have created and annotated your models, Hibernate can automatically create matching database tables for you.
+
+* In `src/main/resources/application.properties`, change `spring.jpa.hibernate.ddl-auto` to `update`.
+* If your app is not already running, start it. (If it was already running it would automatically restart.) When it starts up, it will create the tables it needs. You can check, if you want, by going to MySQLWorkbench and refreshing the tables view.
+* Go back to `src/main/resources/application.properties` and set `spring.jpa.hibernate.ddl-auto` back to `none`.
+* If models change later, repeat this process. Switch ddl-auto to `update`, restart, then set it back to `none`.
