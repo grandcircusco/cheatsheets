@@ -35,7 +35,7 @@ To apply these changes...
 * Open `src/main/resources/application.properties`.
 * Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
 
-```
+```properties
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
 ```
