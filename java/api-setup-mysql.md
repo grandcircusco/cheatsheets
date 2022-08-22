@@ -27,11 +27,10 @@
 # If you want to use this line, uncomment it by removing the #
 #server.port=8081
 
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 # This optional property indicates whether hibernate automatically creates schema tables for us
 # Set it to create or update, start the app, then set it back to none.
 spring.jpa.hibernate.ddl-auto=none
-# If using ddl-auto, be sure to specify this dialect for MySQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ```
 
 #### 3b. SECRET APPLICATION.PROPERTIES
