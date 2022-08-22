@@ -35,18 +35,17 @@ To apply these changes...
 * Open `src/main/resources/application.properties`.
 * Add the following. (HINT: Make sure there are no spaces at the beginning or end of the lines.)
 
-```
+```properties
 spring.mvc.view.prefix=/WEB-INF/views/
 spring.mvc.view.suffix=.jsp
 # This next line is optional. If you want to run multiple servers at once, give each app a different server port.
 # If you want to use this line, uncomment it by removing the #
 #server.port=8081
 
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 # This optional property indicates whether hibernate automatically creates schema tables for us
 # Set it to create or update, start the app, then set it back to none.
 spring.jpa.hibernate.ddl-auto=none
-# If using ddl-auto, be sure to specify this dialect for MySQL
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ```
 
 #### 4b. SECRET APPLICATION.PROPERTIES
@@ -58,7 +57,7 @@ If you have any database passwords or API keys or anything that should be differ
   * Change the schema (`db_demos`) if need be.
   * Change the password to your MySQL password.
 
-```
+```properties
 # Database Connection
 # Update this with your own IP (if not localhost), schema, and your username and password
 spring.datasource.url=jdbc:mysql://localhost:3306/db_demos?useSSL=false&serverTimezone=America/Detroit
@@ -71,12 +70,12 @@ spring.datasource.password=password
 ### 5. CREATE A DATA CLASS (called an entity)
 * In `src/main/java`, inside your package, create a new Java class.
 * Add this annotation before the class: (All of these annotations are in the `javax.persistence` package.)
-```
+```java
 @Entity
 public class Flower {
 ```
 * If you want an autoincrement identity column, add this inside the class:
-```
+```java
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id;
@@ -122,7 +121,7 @@ public interface FlowerRepository extends JpaRepository<Flower, Long> {
 
 For example:
 
-```
+```java
 @Autowired
 private FlowerRepository repo;
 ```
