@@ -16,18 +16,22 @@ Example:
 
 You'll see pairs of projects like this: The real project, and its associated test project.
 
-## Steps to create the projects
+## Detailed Steps
 
-1. Create the real project. For this example, just create a console app called PracticePart1.
+1. Create the primary project. (The "real" project that you give to your customers)
+2. Create the test project consisting of an xUnit project for C#. Example Name: ProjectName_Tests
+3. Set up test file dependency to reference primary project
+  
+    a. Right click the test projects "Dependencies" file and select "add a project reference"
+  
+    b. Check the box next to the project you'd like to connect to the new test file and click ok.
 
-2. Create the test project consisting of an xUnit project for C#. Call this example PracticePart1_Tests (Tip: Type xunit in the project search box and look for the C# one)
+4. Create class files
+  
+    a. Update "internal" to "public" so the test project can access it
 
-3. Connect the projects by adding a reference like so: In Solution Explorer, right-click on PracticePart1_Tests project's Dependencies item, and click Add Project Reference. In the box that opens, check the project you're testing, in this case PracticePart1, and then click OK.
-
-## Practice Steps
-
-1. In our PracticePart1, add a new class call it Coupon. This is where our code will go. We won't touch Program.cs for a while until we get our class built and fully tested.
-
-Change the word "internal" in the class line to "public".
-
-
+5. Add using statements to the Test projects's UnitTest1.cs file. Ex: Using NameSpace;
+6. Create a skeleton of the method without any logic inside in the class file
+7. Create tests for all scenarios you would like your method to evaluate(including the constructor if applicable)
+8. Finally construct the method you will use in the specified class.
+9. In the toolbar under tests select "Run all tests" from the drop down to ensure your method is working correctly.
