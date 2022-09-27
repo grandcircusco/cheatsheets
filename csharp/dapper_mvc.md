@@ -40,7 +40,7 @@ OR
 
 If your primary key is NOT an autoincrement, add the ```[ExplicitKey]``` attribute before the primary key field.
 
-Make each field a property with ```{ get; set; }```
+Make each field a public property with ```{ get; set; }```
 
 
 ### 4. Create a DAL class.
