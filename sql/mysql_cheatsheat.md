@@ -193,13 +193,13 @@ Add a column to a table:
 
 ```sql
 alter table department add
-	country varchar(20);
+    country varchar(20);
 ```
 
 Alter table to add a foreign key:
 
 ```sql
 alter table employee add
-	foreign key (department)   /* The field in the employee table */
+    foreign key (department)   /* The field in the employee table */
     references department(id);  /* The table and field we're referencing, this case table department's primary key id called it */
 ```
