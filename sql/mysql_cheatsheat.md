@@ -93,6 +93,20 @@ select max(price) from product;
 select min(price) from product;
 ```
 
+# Inserting data
+
+Here's a basic insert:
+
+```sql
+insert into department (id, name, location) values ('ACCT','Accounting','Detroit');
+```
+
+The table in this next example has an autoincrement column. Although we're allowed to set that in an insert, we typically don't. For example:
+
+```sql
+insert into employee (firstname, lastname, phone, email, department) values ('Maya','Angelou','248-112-2332','maya@abc.net','MGT');
+```
+
 # Updating data
 
 ```sql
