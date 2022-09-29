@@ -113,6 +113,14 @@ insert into employee (firstname, lastname, phone, email, department) values ('Ma
 update product set price = 1.85;
 ```
 
+# Deleting data
+
+Although you can use any columns in your delete's where clause, the best practice is to use the primary key:
+
+```sql
+delete from employee where id = 26;
+```
+
 # Selecting data from two tables (joining)
 
 ```sql
