@@ -23,7 +23,7 @@
 
 ```groovy
 // added for JSP rendering
-providedRuntime 'javax.servlet:jstl'
+implementation 'javax.servlet:jstl'
 providedRuntime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 ```
 
