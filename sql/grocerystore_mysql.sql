@@ -20,7 +20,7 @@ CREATE TABLE product (
 insert into product (name, description, price, inventory, category) values ('Banana','Ripe and tasty','0.3','50','FRUIT');
 insert into product (name, description, price, inventory, category) values ('Gala Apple','Sweet and crisp','1.2','40','FRUIT');
 insert into product (name, description, price, inventory, category) values ('Orange Juice','Extra pulp the way Grandma served it','2.75','12','FRUIT');
-insert into product (name, description, price, inventory, category) values ('Whole Milk','One Gallon Vitamin D','18.85','22','DAIRY');
+insert into product (name, description, price, inventory, category) values ('Whole Milk','One Gallon Vitamin D','1.85','22','DAIRY');
 insert into product (name, description, price, inventory, category) values ('Large Eggs','One Dozen','0.95','45','DAIRY');
 insert into product (name, description, price, inventory, category) values ('Frozen Pizza','Meat lovers','5.45','8','FROZEN');
 insert into product (name, description, price, inventory, category) values ('Angus Beef','3-pound package','7.25','12','MEAT');
