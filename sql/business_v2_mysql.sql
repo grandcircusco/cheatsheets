@@ -1,6 +1,6 @@
-drop database if exists business;
-create database business;
-use business;
+drop database if exists businessv2;
+create database businessv2;
+use businessv2;
 create table employee (
     id int NOT NULL AUTO_INCREMENT,
     firstname varchar(50),
