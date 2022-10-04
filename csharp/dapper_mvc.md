@@ -111,6 +111,10 @@ public static List<Department> GetAllDepartments()
 
 ### 8. Add a controller
 
+Add a controller for each model class. Make sure you capitalize "C" in the filename.
+
+Add a using statement with the namespace of your models.
+
 **Note: (You might need to add your model path to the controller file's ```using``` lines as in ```using BusinessDemo.Models;```.)**
 
 IMPORTANT! Name your controller file without a "1" after the word Controller. The default has a 1 because it tries to use HomeController.cs, which already exists.
