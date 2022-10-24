@@ -1,5 +1,7 @@
 # Calling/Consuming a Remote API in C#
 
+**Important: The approach here uses the newer packages for calling API and does not require parasing JSON. See notes at end for why we're using this approach.**
+
 1. Install the ``Microsoft.AspNet.WebApi.Client`` package in NuGet. (You can search for ``webapi.client``).
 2. Add a Singleton class as per the sample code below (just copy and paste into your DAL where it's noted)
 3. When needing the instance of HttpClient, just grab the MyHttp property.
@@ -111,4 +113,12 @@ namespace APIConsole
     }
 }
 ```
+
+# Notes regarding framework best practices.
+
+As per the note in this link, https://learn.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest?view=net-7.0
+
+Microsoft no longer recommends using ``HttpWebRequest`` and instead recommends the above approach using HttpClient. Here's the quote:
+
+> We don't recommend that you use ``HttpWebRequest`` for new development. Instead, use the ``System.Net.Http.HttpClient`` class.
 
