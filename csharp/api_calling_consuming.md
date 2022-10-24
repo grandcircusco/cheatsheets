@@ -10,47 +10,87 @@ Microsoft.AspNet.WebApi.Client
 
 ## Before Starting: Understanding the HttpClient
 
-Before starting, make sure you understand how the HttpClient class works. For each remote API domain
-you're connecting to, you should only need to create one instance of HttpClient. (This concept
-is called a "singleton", where you only create one instance of a particular class.)
+Before starting, make sure you understand the following regarding HttpClient. For each remote API domain you're connecting to, you should only need to create one instance of HttpClient. (This concept is called a "singleton", where you only create one instance of a particular class.) The HttpClient then manages all connections for you, a concept called pooling.
 
-One way to accomplish this is by creating a private static member of HttpClient inside a DAL class,
-and then provide either a public or private function for obtaining that instance. The first thing
-the function will do is check if the instance exists. If not, create it. Then in either case, return
-the instance. The code below will use this concept.
+The following code demonstrates this:
+* There's a private member called _realClient. This is where the actual instance is stored, but you won't use this anywhere in your code; instead you'll use the public property.
+* The public property's getter checks if the private member exists; if not, it will create it. Then in either case it returns the private member.
 
-## UNDER CONSTRUCTION, REST COMING SOON...
+***Tip**: Make sure the BaseAddress's Uri ends with a slash. Otherwise the URL will fall apart when the call is made.*
 
-Setting up webclient:
+Notice in the function called GetBreeds we're using the MyHttp public property rather than accessing the _realClient private member directly.
+
+Then we make the API call. ***Tip**: Do not start with a slash.*
+
+* Put the word "async" before the API call.
+* Put the word async before the return type
+* Wrap the return type with Task< >. Note: Your return statement itself will still just return the basic type; don't wrap it in a Task< >. (See after the code for more detail.)
+* Any function that calls this function must also be made async and return a Task.
+
 
 ```cs
 public class DogAPI
 {
 
-	private static HttpClient _realClient = null;
-	public static HttpClient MyHttp
-	{
-		get
-		{
-			if (_realClient == null)
-			{
-				_realClient = new HttpClient();
-				_realClient.BaseAddress = new Uri("https://api.thedogapi.com/v1/"); // ADD YOUR OWN BASE ADDRESS HERE
-				_realClient.DefaultRequestHeaders.Add("x-api-key",   // REPLACE WITH YOUR OWN API KEY STUFF
-					"9a576995-4641-4b6b-9026-d14cf814ea57");
-			}
-			return _realClient;
-		}
-	}
+    private static HttpClient _realClient = null;
+    public static HttpClient MyHttp
+    {
+        get
+        {
+            if (_realClient == null)
+            {
+                _realClient = new HttpClient();
+                _realClient.BaseAddress = new Uri("https://api.thedogapi.com/v1/"); // ADD YOUR OWN BASE ADDRESS HERE
+                // If you need to include an API key as a header:
+                // (Find out the correct name; this one uses x-api-key.)
+                _realClient.DefaultRequestHeaders.Add("x-api-key",   // REPLACE WITH YOUR OWN API KEY STUFF
+                    "9a576995-4641-4b6b-9026-d14cf814ea57");
+            }
+            return _realClient;
+        }
+    }
 
-	public static async Task<List<Breed>> GetBreeds(int count)
-	{
-		var connection = await MyHttp.GetAsync($"breeds?limit={count}");
-		List<Breed> breeds = await connection.Content.ReadAsAsync<List<Breed>>();
-		return breeds;
-	}
+    public static async Task<List<Breed>> GetBreeds(int count)
+    {
+        var connection = await MyHttp.GetAsync($"breeds?limit={count}");
+        List<Breed> breeds = await connection.Content.ReadAsAsync<List<Breed>>();
+        return breeds;
+    }
 }
 ```
+
+## More Details if you're curious
+
+Important: The API call (GetAsync) is what's known as *asynchronous*. You don't need to know much about it other than to remember to put the word ``await`` before the call like so:
+
+```cs
+List<Breed> breeds = await connection.Content.ReadAsAsync<List<Breed>>();
+```
+
+The only downside is that now this method needs to also be asynchronous. To do so, we put the word async before the return type, and we wrap the return type with Task:
+
+```cs
+public static async Task<List<Breed>> GetBreeds(int count)
+```
+
+However, when we do the actual return statement, we don't add a Task around it. Notice our return type is List<Breed> and that's all we return:
+
+```cs
+List<Breed> breeds = await connection.Content.ReadAsAsync<List<Breed>>();
+return breeds;
+```
+
+This might seem like a mismatch but it is indeed correct.
+
+
+## What if the return type is void?
+
+Then you just put Task for the return type. See the following section for an example.
+
+## Quick Console App
+
+Just like with any other app, you need to add the ``Microsoft.AspNet.WebApi.Client`` NuGet package. And notice also that we added the ``async`` keyword before the return type in ``Main``. And notice that the return type is normally ``void`` with the ``Main``, so instead we just return ``Task``.
+
 
 ```cs
 using System;
@@ -59,16 +99,16 @@ using System.Threading.Tasks;
 
 namespace APIConsole
 {
-	class Program
-	{
-		static async Task Main(string[] args)
-		{
-			HttpClient client = new HttpClient();
-			client.BaseAddress = new Uri("https://zoo-animal-api.herokuapp.com/");
-			string response = await client.GetStringAsync("animals/rand/3");
-			Console.WriteLine(response);
-		}
-	}
+    class Program
+    {
+        static async Task Main(string[] args)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://zoo-animal-api.herokuapp.com/");
+            string response = await client.GetStringAsync("animals/rand/3");
+            Console.WriteLine(response);
+        }
+    }
 }
 ```
 
