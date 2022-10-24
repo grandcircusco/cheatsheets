@@ -6,7 +6,7 @@
 2. Add a Singleton class as per the sample code below (just copy and paste into your DAL where it's noted)
 3. When needing the instance of HttpClient, just grab the MyHttp property.
 4. When a function makes an async call (such as MyHttp.GetAsync()), add the keyword async before your return type, and wrap the return type in Task<>. (If the return type is ``void``, just put ``Task`` not ``Task<void>``).
-5. Any function that calls this function you just made must do the same -- add async and wrap return in Task<>
+5. Any function that calls this function you just made must do the same -- add async and wrap return in Task<> and add the word ``await`` before the actual function call.
 
 ```cs
 public class DogAPI
@@ -41,7 +41,7 @@ public class DogAPI
 }
 ```
 
-Then inside the controller we need to make the calling function async:
+Then inside the controller we need to make the calling function ``async`` and add the word ``await`` before we call ``DogAPI.GetBreeds``.
 
 ```cs
 public async Task<IActionResult> Index()
