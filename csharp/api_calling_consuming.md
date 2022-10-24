@@ -41,6 +41,17 @@ public class DogAPI
 }
 ```
 
+Then inside the controller we need to make the calling function async:
+
+```cs
+public async Task<IActionResult> Index()
+{
+    List<Breed> breeds = await DogAPI.GetBreeds(5);
+    return View(breeds);
+}
+
+```
+
 
 ## Understanding the HttpClient
 
