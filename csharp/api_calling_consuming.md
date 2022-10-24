@@ -1,37 +1,16 @@
 # Calling/Consuming a Remote API in C#
 
-First: Using the NuGet Package Manager, add the following package:
-
-```
-Microsoft.AspNet.WebApi.Client
-```
-
-(You can probably use the search term ```webapi.client```)
-
-## Before Starting: Understanding the HttpClient
-
-Before starting, make sure you understand the following regarding HttpClient. For each remote API domain you're connecting to, you should only need to create one instance of HttpClient. (This concept is called a "singleton", where you only create one instance of a particular class.) The HttpClient then manages all connections for you, a concept called pooling.
-
-The following code demonstrates this:
-* There's a private member called _realClient. This is where the actual instance is stored, but you won't use this anywhere in your code; instead you'll use the public property.
-* The public property's getter checks if the private member exists; if not, it will create it. Then in either case it returns the private member.
-
-***Tip**: Make sure the BaseAddress's Uri ends with a slash. Otherwise the URL will fall apart when the call is made.*
-
-Notice in the function called GetBreeds we're using the MyHttp public property rather than accessing the _realClient private member directly.
-
-Then we make the API call. ***Tip**: Do not start with a slash.*
-
-* Put the word "async" before the API call.
-* Put the word async before the return type
-* Wrap the return type with Task< >. Note: Your return statement itself will still just return the basic type; don't wrap it in a Task< >. (See after the code for more detail.)
-* Any function that calls this function must also be made async and return a Task.
-
+1. Install the ``Microsoft.AspNet.WebApi.Client`` package in NuGet. (You can search for ``webapi.client``).
+2. Add a Singleton class as per the sample code below (just copy and paste into your DAL where it's noted)
+3. When needing the instance of HttpClient, just grab the MyHttp property.
+4. When a function makes an async call (such as MyHttp.GetAsync()), add the keyword async before your return type, and wrap the return type in Task<>. (If the return type is ``void``, just put ``Task`` not ``Task<void>``).
+5. Any function that calls this function you just made must do the same -- add async and wrap return in Task<>
 
 ```cs
 public class DogAPI
 {
 
+    // ====COPY AND PASTE STARTING HERE====
     private static HttpClient _realClient = null;
     public static HttpClient MyHttp
     {
@@ -49,6 +28,7 @@ public class DogAPI
             return _realClient;
         }
     }
+    // ====END COPY AND PASTE====
 
     public static async Task<List<Breed>> GetBreeds(int count)
     {
@@ -59,7 +39,27 @@ public class DogAPI
 }
 ```
 
-## More Details if you're curious
+
+## Understanding the HttpClient
+
+For each remote API domain you're connecting to, you should only need to create one instance of HttpClient. (This concept is called a "singleton", where you only create one instance of a particular class.) The HttpClient then manages all connections for you, a concept called pooling.
+
+The following code demonstrates this:
+* There's a private member called _realClient. This is where the actual instance is stored, but you won't use this anywhere in your code; instead you'll use the public property.
+* The public property's getter checks if the private member exists; if not, it will create it. Then in either case it returns the private member.
+
+***Tip**: Make sure the BaseAddress's Uri ends with a slash. Otherwise the URL will fall apart when the call is made.*
+
+Notice in the function called GetBreeds we're using the MyHttp public property rather than accessing the _realClient private member directly.
+
+Then we make the API call. ***Tip**: Do not start with a slash.*
+
+* Put the word "async" before the API call.
+* Put the word async before the return type
+* Wrap the return type with Task< >. Note: Your return statement itself will still just return the basic type; don't wrap it in a Task< >. (See after the code for more detail.)
+* Any function that calls this function must also be made async and return a Task.
+
+## Even More Details if you're curious
 
 Important: The API call (GetAsync) is what's known as *asynchronous*. You don't need to know much about it other than to remember to put the word ``await`` before the call like so:
 
