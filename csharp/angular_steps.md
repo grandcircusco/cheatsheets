@@ -36,6 +36,26 @@ ng serve -o
 
 **Error?** If you see an error about port in use, you probably have another angular app running. Go find that angular app's terminal, and stop the server by pressing Ctrl+C.
 
+## Common Next Steps
+
+### Create an interface
+
+Generally we start with our model, so build the interface:
+
+```
+ng generate interface beverage
+```
+
+Open it and fill it in.
+
+### Create a service to hold a list of the interface
+
+You will usually want a service handling the data, as well as a service for API calling.
+
+```
+ng generate service bev
+```
+
 ## Other Stuff
 
 When you want to create an interface, **make sure you're in the angular application's main folder** and type the following (but replace "pet" with the name of your interface):
