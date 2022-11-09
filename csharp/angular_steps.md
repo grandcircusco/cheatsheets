@@ -56,14 +56,11 @@ You will usually want a service handling the data, as well as a service for API 
 ng generate service bev
 ```
 
-## Other Stuff
+Inside the service, you will likely have your data. If it's local data, it might for example an array of your interface.
 
-When you want to create an interface, **make sure you're in the angular application's main folder** and type the following (but replace "pet" with the name of your interface):
-```bash
-ng generate interface pet
-```
+### Build your components
 
-When you want to create a component, **make sure you're in the angular application's main folder** and type the following (but replace "show-pet" with the name of your component):
+When you want to create a component, type the following (but replace "show-pet" with the name of your component):
 ```bash
 ng generate component show-pet
 ```
