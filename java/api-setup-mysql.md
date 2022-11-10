@@ -1,4 +1,4 @@
-# SPRING BOOT MVC SETUP GUIDE (MYSQL)
+# SPRING BOOT API SETUP GUIDE (MYSQL)
 
 ### 1. CREATE & DOWNLOAD FROM START.SPRING.IO
 * Browse to [https://start.spring.io](https://start.spring.io)
