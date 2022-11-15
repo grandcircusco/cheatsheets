@@ -13,9 +13,11 @@ Add the usual Dapper and MySQL extensions through NuGet:
 * Dapper.Contrib
 * MySql.Data
 
-Add a new folder called **Models** by right-clicking on your project name and clicking **Add -> New Folder**.
-
 ### Models
+
+[This step is optional; you don't have to put your classes inside a Models folder.]
+
+Add a new folder called **Models** by right-clicking on your project name and clicking **Add -> New Folder**.
 
 Inside the new Models folder, create a model for each table, and create a DAL like you did before with database projects.
 
