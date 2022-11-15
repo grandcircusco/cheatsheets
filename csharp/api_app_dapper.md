@@ -23,16 +23,7 @@ Inside the new Models folder, create a model for each table, and create a DAL li
 
 After you create a DAL, add the connection string injection to Startup.cs:
 
-**Startup.cs**
-```cs
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddControllers();
-    string connstring = Configuration.GetConnectionString("db");
-    IDbConnection db = new MySqlConnection(connstring);
-    DAL.db = db;
-}
-```
+## Database Connection
 
 Add the connection string to your appsettings.json. **UPDATE THE DATABASE NAME TO MATCH YOUR DATABASE!!**
 
@@ -51,6 +42,26 @@ Add the connection string to your appsettings.json. **UPDATE THE DATABASE NAME T
     "db": "Server=localhost;Database=DATABASENAME;Uid=root;Password=abc123"
   }
 }
+```
+
+**(.NET v5) Startup.cs**
+```cs
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllers();
+    string connstring = Configuration.GetConnectionString("db");
+    IDbConnection db = new MySqlConnection(connstring);
+    DAL.db = db;
+}
+```
+
+
+**(.NET v6) Program.cs**
+Add these lines at the end *before* the app.Run() line:
+```cs
+    string connstring = Configuration.GetConnectionString("db");
+    IDbConnection db = new MySqlConnection(connstring);
+    DAL.db = db;
 ```
 
 ### Controllers
