@@ -13,6 +13,7 @@
 * Unzip the file. This will create a folder.
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
 
+### 2. IMPORT INTO ECLIPSE
 * In Eclipse, select **File** > **Import**
 * Select **Existing Gradle Project**
 * For Project root rirectory, select the unzipped folder that you downloaded. Click finish.
