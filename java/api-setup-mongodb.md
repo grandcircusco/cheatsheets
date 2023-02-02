@@ -2,7 +2,8 @@
 
 ### 1. CREATE & DOWNLOAD FROM START.SPRING.IO
 * Browse to [https://start.spring.io](https://start.spring.io)
-* Select **Gradle** Project
+* Select **Gradle - Groovy** Project
+* Select the Spring Boot **version that starts with 2**, but not the snapshot.
 * Enter a **group name**, e.g. co.grandcircus
 * Enter an **artifact name**, e.g. spring-lab
 * Change Packaging from Jar to **War**.

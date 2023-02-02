@@ -2,7 +2,8 @@
 
 ### 1. CREATE & DOWNLOAD FROM START.SPRING.IO
 * Browse to [https://start.spring.io](https://start.spring.io)
-* Select Gradle Project
+* Select **Gradle - Groovy** Project
+* Select the Spring Boot **version that starts with 2**, but not the snapshot.
 * Enter a group name, e.g. co.grandcircus
 * Enter an artifact name, e.g. spring-lab
 * Change Packaging from Jar to War.
@@ -13,8 +14,8 @@
 * Move the folder to a location with your other projects. (You probably don't want to leave it in Downloads.)
 
 ### 2. IMPORT INTO ECLIPSE
-* In Eclipse, select File > Import
-* Select Existing Gradle Project
+* In Eclipse, select **File** > **Import**
+* Select **Existing Gradle Project**
 * For Project root directory, select the unzipped folder that you downloaded. Click finish.
 * Wait for the import to complete. There is a progress bar near the bottom-right of Eclipse.
 
